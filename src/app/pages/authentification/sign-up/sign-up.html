@@ -1,0 +1,64 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+            <img src="assets/images/img-01.png" alt="IMG">
+      </div>
+
+      <form class="login100-form validate-form" (ngSubmit)="onSubmit()">
+
+        <span class="login100-form-title">Inscritpion </span>
+
+        <div class="wrap-input100 validate-input" data-validate="Nom obligatoire">
+          <input class="input100" type="text" [(ngModel)]="nom" name="nom" placeholder="Nom">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Prenom obligatoire">
+          <input class="input100" type="text" [(ngModel)]="prenom" name="prenom" placeholder="Prenom">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Email obligatoire: ex@abc.xyz">
+          <input class="input100" type="text" [(ngModel)]="email" name="email" placeholder="Email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Mot de passe obligatoire">
+          <input class="input100" type="std" [(ngModel)]="std" name="std" placeholder="STD">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Mot de passe obligatoire">
+          <input class="input100" type="password" [(ngModel)]="password" name="password" placeholder="Password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button type="submit" class="login100-form-btn">Inscription</button>
+        </div>
+
+        <div class="text-center p-t-136">
+          <a class="txt2"  [routerLink]="['/login']">Se connecter
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

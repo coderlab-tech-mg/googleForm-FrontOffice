@@ -1,0 +1,14 @@
+.form-list-container {
+  padding: 1rem;
+}
+
+.formulaire-card {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.question-block {
+  margin-left: 1rem;
+}

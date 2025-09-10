@@ -1,0 +1,27 @@
+<div *ngFor="let form of formulaires" class="formulaire-card">
+  <h2>{{ form.titre }}</h2>
+
+  <div *ngFor="let q of form.questions" class="question">
+    <label>{{ q.questionText }}</label>
+
+    <input *ngIf="q.type === 'text'" type="text" class="form-control" />
+
+    <div *ngIf="q.type === 'radio'">
+      <label *ngFor="let option of q.options">
+        <input type="radio" name="{{ q.questionText }}" /> {{ option }}
+      </label>
+    </div>
+
+    <div *ngIf="q.type === 'checkbox'">
+      <label *ngFor="let option of q.options">
+        <input type="checkbox" /> {{ option }}
+      </label>
+    </div>
+
+    <select *ngIf="q.type === 'select'" class="form-select">
+      <option *ngFor="let option of q.options">{{ option }}</option>
+    </select>
+    
+    <hr />
+  </div>
+</div>

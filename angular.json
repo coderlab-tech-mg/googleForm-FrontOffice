@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "google-form": {
+    "gestion_employer": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -22,10 +22,30 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/vendor/animate/animate.css",
+              "src/assets/vendor/css-hamburgers/hamburgers.min.css",
+              "src/assets/vendor/select2/select2.min.css",
+              "src/assets/css/util.css",
+              "src/assets/css/main.css",
               "src/styles.css"
+            ],
+            "scripts": [
+              "src/assets/vendor/jquery/jquery-3.2.1.min.js",
+              "src/assets/vendor/bootstrap/js/popper.js",
+              "src/assets/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/vendor/select2/select2.min.js",
+              "src/assets/vendor/tilt/tilt.jquery.min.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
@@ -56,10 +76,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "google-form:build:production"
+              "buildTarget": "gestion_employer:build:production"
             },
             "development": {
-              "buildTarget": "google-form:build:development"
+              "buildTarget": "gestion_employer:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,14 +99,37 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/vendor/animate/animate.css",
+              "src/assets/vendor/css-hamburgers/hamburgers.min.css",
+              "src/assets/vendor/select2/select2.min.css",
+              "src/assets/css/util.css",
+              "src/assets/css/main.css",
               "src/styles.css"
+            ],
+            "scripts": [
+              "src/assets/vendor/jquery/jquery-3.2.1.min.js",
+              "src/assets/vendor/bootstrap/js/popper.js",
+              "src/assets/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/vendor/select2/select2.min.js",
+              "src/assets/vendor/tilt/tilt.jquery.min.js",
+              "src/assets/js/main.js"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
