@@ -5,7 +5,6 @@
     <div *ngFor="let q of formulaire.questions" class="question">
       <label class="question-text">{{ q.questionText }}</label>
 
-      <!-- Texte -->
       <input
         *ngIf="q.type === 'text'"
         type="text"
@@ -13,7 +12,6 @@
         class="form-control"
       />
 
-      <!-- Radio -->
       <div *ngIf="q.type === 'radio'" class="options">
         <label *ngFor="let option of q.options" class="option-label">
           <input
@@ -37,7 +35,6 @@
         </label>
       </div>
 
-      <!-- Select -->
       <select
         *ngIf="q.type === 'select'"
         [(ngModel)]="reponseMap[q.id!]"
