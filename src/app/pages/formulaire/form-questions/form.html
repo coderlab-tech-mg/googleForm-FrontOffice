@@ -15,7 +15,7 @@
 
     <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'">
       <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex">
-        <input type="text" [(ngModel)]="opt.value" placeholder="Option" />
+        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option" />
         <button type="button" (click)="supprimerOption(q, j)">Supprimer option</button>
       </div>
       <button type="button" (click)="ajouterOption(q)">Ajouter option</button>

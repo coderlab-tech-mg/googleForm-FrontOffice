@@ -33,7 +33,7 @@ export class FormQuestion {
 
   ajouterOption(q: Question) {
     if (!q.options) q.options = [];
-    q.options.push({ value: '' });
+    q.options?.push('');
   }
 
   supprimerOption(q: Question, i: number) {

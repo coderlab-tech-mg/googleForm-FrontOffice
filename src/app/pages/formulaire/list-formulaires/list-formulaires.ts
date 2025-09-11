@@ -18,7 +18,7 @@ export class ListFormulaires implements OnInit  {
   }
 
   loadFormulaires() {
-    this.service.getFormulaires().subscribe({
+    this.service.getActiveFormulaires().subscribe({
       next: (data) => this.formulaires = data,
       error: (err) => console.error(err)
     });
