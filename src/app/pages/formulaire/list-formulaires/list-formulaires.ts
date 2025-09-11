@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormulaireService, Formulaire, Question } from '../../services/formulaire.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list-formulaires',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './list-formulaires.html',
   styleUrl: './list-formulaires.css'
 })
 export class ListFormulaires implements OnInit  {
   formulaires: Formulaire[] = [];
 
-  constructor(private service: FormulaireService) { }
+  constructor(private service: FormulaireService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadFormulaires();
@@ -22,5 +23,9 @@ export class ListFormulaires implements OnInit  {
       next: (data) => this.formulaires = data,
       error: (err) => console.error(err)
     });
+  }
+
+  openFormulaire(id: number) {
+    this.router.navigate(['/formulaire-reponse', id]);
   }
 }
