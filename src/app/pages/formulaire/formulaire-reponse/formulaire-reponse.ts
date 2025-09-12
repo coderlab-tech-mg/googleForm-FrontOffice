@@ -47,24 +47,27 @@ export class FormulaireReponse implements OnInit {
   }
 
   submit() {
-    const reponses: ReponseQuestionRequest[] = this.formulaire.questions.map(q => ({
-      questionText: q.questionText,
-      answer: this.reponseMap[q.id!]
-    }));
+  const reponses: ReponseQuestionRequest[] = this.formulaire.questions.map(q => ({
+    questionId: q.id!,
+    questionText: q.questionText,
+    answer: this.reponseMap[q.id!]
+  }));
 
-    if (!this.formulaire.id) {
-      console.error("Formulaire ID non défini !");
-      return;
-    }
-
-    const payload: SubmitFormulaireRequest = {
-      formulaireId: this.formulaire.id,
-      reponses: reponses
-    };
-
-    this.reponseService.submitReponse(payload).subscribe({
-      next: () => alert('Réponses envoyées !'),
-      error: err => console.error(err)
-    });
+  if (!this.formulaire.id) {
+    console.error("Formulaire ID non défini !");
+    return;
   }
+
+  const payload: SubmitFormulaireRequest = {
+    formulaireId: this.formulaire.id,
+    reponses: reponses
+  };
+
+  console.log("Payload envoyé :", JSON.stringify(payload, null, 2));
+
+  this.reponseService.submitReponse(payload).subscribe({
+    next: () => alert('Réponses envoyées !'),
+    error: err => console.error(err)
+  });
+}
 }
