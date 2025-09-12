@@ -8,12 +8,14 @@ export interface QuestionOption {
 }
 
 export interface Question {
+  id?: number;
   type: 'text' | 'radio' | 'checkbox' | 'select';
   questionText: string;
   options?: string[];
 }
 
 export interface Formulaire {
+  id?: number;          
   titre: string;
   questions: Question[];
   active: boolean;
@@ -31,7 +33,7 @@ export class FormulaireService {
   }
 
   getActiveFormulaires(): Observable<Formulaire[]> {
-  return this.http.get<Formulaire[]>(`${this.baseUrl}/list`);
+  return this.http.get<Formulaire[]>(`${this.baseUrl}/list-active`);
 }
 
   getFormulaireById(id: number): Observable<Formulaire> {

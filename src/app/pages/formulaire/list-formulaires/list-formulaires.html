@@ -1,33 +1,8 @@
 <div class="container">
   <div *ngFor="let form of formulaires" class="formulaire-card">
     <h2>{{ form.titre }}</h2>
-
-    <div *ngFor="let q of form.questions" class="question">
-      <label class="question-text">{{ q.questionText }}</label>
-
-      <input *ngIf="q.type === 'text'" type="text" class="form-control" />
-
-      <div *ngIf="q.type === 'radio'" class="options">
-        <label *ngFor="let option of q.options" class="option-label">
-          <input type="radio" name="{{ q.questionText }}" /> {{ option }}
-        </label>
-      </div>
-
-      <div *ngIf="q.type === 'checkbox'" class="options">
-        <label *ngFor="let option of q.options" class="option-label">
-          <input type="checkbox" /> {{ option }}
-        </label>
-      </div>
-
-      <select *ngIf="q.type === 'select'" class="form-select">
-        <option *ngFor="let option of q.options">{{ option }}</option>
-      </select>
-
-      <hr />
-    </div>
-
     <div class="btn-container">
-      <button class="btn-repondre">Répondre</button>
-    </div>
+  <button class="btn-repondre" (click)="openFormulaire(form.id!)">Répondre</button>
+</div>
   </div>
 </div>
