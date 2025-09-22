@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-5">
+    <h2 class="fw-bold text-gradient">Formulaires</h2>
+    <button class="btn btn-success shadow px-4 rounded-pill" (click)="creerFormulaire()">
+      + Créer Formulaire
+    </button>
+  </div>
+
+  <div *ngIf="formulaires.length > 0; else noFormulaires" class="row g-4">
+    <div *ngFor="let f of formulaires" class="col-md-6 col-lg-4">
+      <div class="card shadow-lg border-0 rounded-3 hover-card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold text-dark">{{ f.titre }}</h5>
+
+          <div class="mt-auto d-flex justify-content-end">
+            <button 
+              class="btn btn-outline-primary rounded-pill px-3"
+              (click)="voirNotes(f.id!)">
+              Voir notes étudiant
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noFormulaires>
+    <div class="alert alert-light border shadow-sm text-center py-4">
+      <h5 class="mb-1">Aucun formulaire disponible</h5>
+      <p class="text-muted">Vous pouvez en créer un en cliquant sur le bouton vert ci-dessus.</p>
+    </div>
+  </ng-template>
+</div>

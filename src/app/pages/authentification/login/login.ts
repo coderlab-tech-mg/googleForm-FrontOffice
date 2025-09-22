@@ -19,7 +19,7 @@ export class Login {
   onSubmit() {
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (res) => {
-        this.router.navigate(['/formQuestion']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         alert('Email ou mot de passe incorret');

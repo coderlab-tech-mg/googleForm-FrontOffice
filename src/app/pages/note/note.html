@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h2 class="fw-bold text-primary mb-4">Notes des étudiants</h2>
+  <h2 class="fw-bold text-primary mb-4">{{formulaireTitre}}</h2>  
+  <table class="table table-bordered shadow-sm">
+    <thead class="table-light">
+      <tr>
+        <th>STD</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of notes">
+        <td>{{ n.student?.std }}</td>
+        <td>{{ n.student?.nom }}</td>
+        <td>{{ n.student?.prenom }}</td>
+        <td>{{ n.totalPoints }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="notes.length === 0" class="alert alert-info text-center">
+    Aucune note disponible pour ce formulaire.
+  </div>
+</div>

@@ -21,6 +21,18 @@
       <button type="button" (click)="ajouterOption(q)">Ajouter option</button>
     </div>
 
+    <input
+      type="text"
+      [(ngModel)]="q.reponseCorrecte"
+      placeholder="Réponse correcte"
+    />
+
+    <input
+      type="number"
+      [(ngModel)]="q.note"
+      placeholder="Points"
+    />
+
     <button type="button" (click)="supprimerQuestion(i)">Supprimer question</button>
   </div>
 

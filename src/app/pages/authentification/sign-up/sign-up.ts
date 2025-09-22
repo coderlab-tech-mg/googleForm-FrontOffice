@@ -12,27 +12,21 @@ import { AuthService, SignUpRequest } from '../../services/auth.service';
   
 })
 export class SignUp {
-  nom: string = '';
-  prenom: string = '';
   email: string = '';
   password: string = '';
-  std: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     const payload: SignUpRequest = {
-      nom: this.nom,
-      prenom: this.prenom,
       email: this.email,
       password: this.password,
-      std: this.std
     };
 
     this.authService.signUp(payload).subscribe({
       next: (res) => {
         alert(res);
-        this.router.navigate(['/form']);
+        this.router.navigate(['/formQuestion']);
       },
       error: (err) => {
         console.error(err);

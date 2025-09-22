@@ -1,55 +1,94 @@
 <div class="container">
   <div class="formulaire-card">
     <h2>{{ formulaire.titre }}</h2>
-
-    <div *ngFor="let q of formulaire.questions" class="question">
-      <label class="question-text">{{ q.questionText }}</label>
-
-      <input
-        *ngIf="q.type === 'text'"
-        type="text"
-        [(ngModel)]="reponseMap[q.id!]"
-        class="form-control"
-      />
-
-      <div *ngIf="q.type === 'radio'" class="options">
-        <label *ngFor="let option of q.options" class="option-label">
-          <input
-            type="radio"
-            [name]="'q' + q.id"
-            [value]="option"
-            [(ngModel)]="reponseMap[q.id!]"
-          />
-          {{ option }}
-        </label>
-      </div>
-
-      <!-- Checkbox -->
-      <div *ngIf="q.type === 'checkbox'" class="options">
-        <label *ngFor="let option of q.options" class="option-label">
-          <input
-            type="checkbox"
-            (change)="toggleCheckbox(q.id!, option)"
-          />
-          {{ option }}
-        </label>
-      </div>
-
-      <select
-        *ngIf="q.type === 'select'"
-        [(ngModel)]="reponseMap[q.id!]"
-        class="form-select"
-      >
-        <option *ngFor="let option of q.options">{{ option }}</option>
-      </select>
-
-      <hr />
+    <div *ngIf="showAlert && (!studentInfos.std || !studentInfos.nom || !studentInfos.prenom)" 
+         class="alert alert-danger">
+      Veuillez remplir toutes vos informations (STD, Nom, Prénom).
     </div>
 
-    <div class="btn-container">
-      <button (click)="submit()" class="btn-repondre">
-        Répondre
-      </button>
-    </div>
+    <form #form="ngForm" (ngSubmit)="submit($event)" novalidate>
+      <div class="student-info">
+        <h3>Vos informations</h3>
+
+        <input
+          type="text"
+          placeholder="STD"
+          name="std"
+          [(ngModel)]="studentInfos.std"
+          class="form-control mb-1"
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Nom"
+          name="nom"
+          [(ngModel)]="studentInfos.nom"
+          class="form-control mb-1"
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Prénom"
+          name="prenom"
+          [(ngModel)]="studentInfos.prenom"
+          class="form-control mb-3"
+          required
+        />
+      </div>
+
+      <div *ngFor="let q of formulaire.questions" class="question">
+        <label class="question-text">{{ q.questionText }}</label>
+
+        <input
+          *ngIf="q.type === 'text'"
+          type="text"
+          [(ngModel)]="reponseMap[q.id!]"
+          [name]="'q' + q.id"
+          class="form-control mb-2"
+        />
+
+        <div *ngIf="q.type === 'radio'" class="options mb-2">
+          <label *ngFor="let option of q.options" class="option-label me-3">
+            <input
+              type="radio"
+              [name]="'q' + q.id"
+              [value]="option"
+              [(ngModel)]="reponseMap[q.id!]"
+            />
+            {{ option }}
+          </label>
+        </div>
+
+        <div *ngIf="q.type === 'checkbox'" class="options mb-2">
+          <label *ngFor="let option of q.options" class="option-label me-3">
+            <input type="checkbox" (change)="toggleCheckbox(q.id!, option)" />
+            {{ option }}
+          </label>
+        </div>
+
+        <select
+          *ngIf="q.type === 'select'"
+          [(ngModel)]="reponseMap[q.id!]"
+          [name]="'q' + q.id"
+          class="form-select mb-3"
+        >
+          <option *ngFor="let option of q.options">{{ option }}</option>
+        </select>
+
+        <hr />
+      </div>
+
+      <div class="btn-container mt-3" *ngIf="!alreadyAnswered">
+        <button type="submit" class="btn btn-primary" [disabled]="submitting">
+          {{ submitting ? 'Envoi...' : 'Répondre' }}
+        </button>
+      </div>
+
+      <div *ngIf="alreadyAnswered" class="alert alert-info mt-3">
+        Vous avez déjà répondu à ce formulaire.
+      </div>
+    </form>
   </div>
 </div>

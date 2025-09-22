@@ -12,6 +12,8 @@ export interface Question {
   type: 'text' | 'radio' | 'checkbox' | 'select';
   questionText: string;
   options?: string[];
+  reponseCorrecte?: string;
+  note?: number;
 }
 
 export interface Formulaire {
@@ -38,5 +40,9 @@ export class FormulaireService {
 
   getFormulaireById(id: number): Observable<Formulaire> {
     return this.http.get<Formulaire>(`${this.baseUrl}/${id}`);
+  }
+
+  getAllFormulaire(): Observable<Formulaire> {
+    return this.http.get<Formulaire>(`${this.baseUrl}/all`);
   }
 }
