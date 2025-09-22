@@ -8,11 +8,8 @@ export interface LoginRequest {
 }
 
 export interface SignUpRequest {
-  nom: string;
-  prenom: string;
   email: string;
   password: string;
-  std: string;
 }
 
 @Injectable({

@@ -24,8 +24,15 @@ export class FormQuestion {
   ) {}
 
   addQuestion() {
-    this.questions.push({ type: 'text', questionText: '', options: [] });
-  }
+  this.questions.push({ 
+    type: 'text', 
+    questionText: '', 
+    options: [], 
+    reponseCorrecte: '',
+    note: 0
+  });
+}
+
 
   supprimerQuestion(index: number) {
     this.questions.splice(index, 1);

@@ -1,43 +1,54 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ReponseService, SubmitFormulaireRequest, ReponseQuestionRequest } from '../../services/reponse.service';
-import { Formulaire, Question, FormulaireService } from '../../services/formulaire.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+import { ReponseService, SubmitFormulaireRequest, ReponseQuestionRequest } from '../../services/reponse.service';
+import { Formulaire, FormulaireService, Question } from '../../services/formulaire.service';
 
 @Component({
   selector: 'app-formulaire-reponse',
   standalone: true,
-  imports: [CommonModule, FormsModule , RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './formulaire-reponse.html',
   styleUrls: ['./formulaire-reponse.css']
 })
 export class FormulaireReponse implements OnInit {
-  @Input() formulaire!: Formulaire;
-
+  formulaire!: Formulaire;
   reponseMap: { [questionId: number]: string | string[] } = {};
+  studentInfos: { std: string; nom: string; prenom: string } = { std: '', nom: '', prenom: '' };
+  alreadyAnswered = false;
+  submitting = false;
+  showAlert = false;
 
   constructor(
-    private reponseService: ReponseService,
-    private router: Router,
     private route: ActivatedRoute,
-    private formulaireService: FormulaireService
+    private router: Router,
+    private formulaireService: FormulaireService,
+    private reponseService: ReponseService
   ) {}
 
   ngOnInit(): void {
-  const id = Number(this.route.snapshot.paramMap.get('id'));
-  if (id) {
-    this.formulaireService.getFormulaireById(id).subscribe({
-      next: (data) => {
-        this.formulaire = data;
-        this.formulaire.questions.forEach(q => {
-          this.reponseMap[q.id!] = q.type === 'checkbox' ? [] : '';
-        });
-      },
-      error: (err) => console.error(err)
-    });
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id) {
+      this.formulaireService.getFormulaireById(id).subscribe({
+        next: data => {
+          this.formulaire = data;
+          this.formulaire.questions.forEach(q => {
+            this.reponseMap[q.id!] = q.type === 'checkbox' ? [] : '';
+          });
+        },
+        error: err => console.error(err)
+      });
+    }
   }
-}
+
+  checkAlreadyAnswered() {
+    if (this.studentInfos.std && this.formulaire.id !== undefined) {
+      this.reponseService
+        .hasAlreadyAnswered(this.studentInfos.std, this.formulaire.id)
+        .subscribe(res => this.alreadyAnswered = res);
+    }
+  }
 
   toggleCheckbox(qId: number, option: string) {
     const arr = this.reponseMap[qId] as string[];
@@ -46,28 +57,38 @@ export class FormulaireReponse implements OnInit {
     else arr.splice(index, 1);
   }
 
-  submit() {
-  const reponses: ReponseQuestionRequest[] = this.formulaire.questions.map(q => ({
-    questionId: q.id!,
-    questionText: q.questionText,
-    answer: this.reponseMap[q.id!]
-  }));
+  submit(event: Event) {
+    this.showAlert = true;
+    if (!this.studentInfos.std || !this.studentInfos.nom || !this.studentInfos.prenom){
+      this.showAlert = true;
+      event.preventDefault();
+      return;
+    }
+    if (!this.formulaire.id) return;
 
-  if (!this.formulaire.id) {
-    console.error("Formulaire ID non défini !");
-    return;
+    const reponses: ReponseQuestionRequest[] = this.formulaire.questions.map(q => ({
+      questionId: q.id!,
+      questionText: q.questionText,
+      answer: this.reponseMap[q.id!]
+    }));
+
+    const payload: SubmitFormulaireRequest = {
+      formulaireId: this.formulaire.id!,
+      studentInfos: this.studentInfos,
+      reponses
+    };
+
+    this.submitting = true;
+    this.reponseService.submitReponse(payload).subscribe({
+      next: () => {
+        alert('Réponses envoyées!');
+        this.alreadyAnswered = true;
+        this.submitting = false;
+      },
+      error: err => {
+        console.error(err);
+        this.submitting = false;
+      }
+    });
   }
-
-  const payload: SubmitFormulaireRequest = {
-    formulaireId: this.formulaire.id,
-    reponses: reponses
-  };
-
-  console.log("Payload envoyé :", JSON.stringify(payload, null, 2));
-
-  this.reponseService.submitReponse(payload).subscribe({
-    next: () => alert('Réponses envoyées !'),
-    error: err => console.error(err)
-  });
-}
 }
