@@ -14,7 +14,7 @@ import { Formulaire, FormulaireService, Question } from '../../services/formulai
 })
 export class FormulaireReponse implements OnInit {
   formulaire!: Formulaire;
-  reponseMap: { [questionId: number]: string | string[] } = {};
+  reponseMap: { [questionId: string]: string | string[] } = {};
   studentInfos: { std: string; nom: string; prenom: string } = { std: '', nom: '', prenom: '' };
   alreadyAnswered = false;
   submitting = false;
@@ -28,19 +28,27 @@ export class FormulaireReponse implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.formulaireService.getFormulaireById(id).subscribe({
-        next: data => {
-          this.formulaire = data;
-          this.formulaire.questions.forEach(q => {
-            this.reponseMap[q.id!] = q.type === 'checkbox' ? [] : '';
-          });
-        },
-        error: err => console.error(err)
-      });
-    }
+  const id = this.route.snapshot.paramMap.get('id');
+  if (id) {
+    this.formulaireService.getFormulaireById(id).subscribe({
+      next: data => {
+        this.formulaire = data;
+        this.formulaire.questions.forEach(q => {
+          this.reponseMap[q.id!] = q.type === 'checkbox' ? [] : '';
+        });
+      },
+      error: err => console.error(err)
+    });
   }
+}
+
+onStdChange() {
+  if (this.studentInfos.std && this.formulaire?.id) {
+    this.reponseService.hasAlreadyAnswered(this.studentInfos.std, this.formulaire.id)
+      .subscribe(res => this.alreadyAnswered = res);
+  }
+}
+
 
   checkAlreadyAnswered() {
     if (this.studentInfos.std && this.formulaire.id !== undefined) {
@@ -50,7 +58,7 @@ export class FormulaireReponse implements OnInit {
     }
   }
 
-  toggleCheckbox(qId: number, option: string) {
+  toggleCheckbox(qId: string, option: string) {
     const arr = this.reponseMap[qId] as string[];
     const index = arr.indexOf(option);
     if (index === -1) arr.push(option);
