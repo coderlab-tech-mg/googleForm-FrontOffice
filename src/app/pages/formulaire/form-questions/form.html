@@ -8,34 +8,43 @@
 
   <div *ngFor="let q of questions; let i = index" class="question-block">
     <select [(ngModel)]="q.type">
-      <option *ngFor="let type of questionTypes" [value]="type">{{ type }}</option>
+      <option *ngFor="let type of questionTypes" [value]="type.value">
+        {{ type.label }}
+      </option>
     </select>
 
     <input type="text" [(ngModel)]="q.questionText" placeholder="Votre question" />
 
     <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'">
       <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex">
-        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option" />
-        <button type="button" (click)="supprimerOption(q, j)">Supprimer option</button>
+        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option Possible" />
+        <button type="button" class="delete-btn" (click)="supprimerOption(q, j)">Supprimer option</button>
       </div>
       <button type="button" (click)="ajouterOption(q)">Ajouter option</button>
     </div>
 
-    <input
-      type="text"
-      [(ngModel)]="q.reponseCorrecte"
-      placeholder="Réponse correcte"
-    />
+    <div class="reponse-group">
+      <label for="reponseCorrecte">Réponse correcte :</label>
+      <input
+        type="text"
+        id="reponseCorrecte"
+        [(ngModel)]="q.reponseCorrecte"
+        placeholder="Réponse correcte"
+      />
+    </div>
 
-    <input
-      type="number"
-      [(ngModel)]="q.note"
-      placeholder="Points"
-    />
 
-    <button type="button" (click)="supprimerQuestion(i)">Supprimer question</button>
+
+    <div class="points-group">
+      <label for="note">Points :</label>
+      <input type="number" id="note" [(ngModel)]="q.note" placeholder="Points" />
+    </div>
+
+
+
+    <button type="button" class="delete-btn" (click)="supprimerQuestion(i)">Supprimer question</button>
   </div>
 
   <button type="button" (click)="addQuestion()">Ajouter question</button>
-  <button type="button" (click)="submit()">Créer formulaire</button>
+  <button type="button" class="create-form" (click)="submit()">Créer formulaire</button>
 </div>

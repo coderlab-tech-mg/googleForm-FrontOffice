@@ -14,7 +14,7 @@ export interface ReponseQuestionRequest {
 }
 
 export interface SubmitFormulaireRequest {
-  formulaireId: number;
+  formulaireId: string;
   studentInfos: StudentInfos;
   reponses: ReponseQuestionRequest[];
 }
@@ -30,11 +30,11 @@ export class ReponseService {
     return this.http.post(`${this.baseUrl}/submit`, data);
   }
 
-  hasAlreadyAnswered(std: string, formulaireId: number): Observable<boolean> {
+  hasAlreadyAnswered(std: string, formulaireId: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/check-existing-response?std=${std}&formulaireId=${formulaireId}`);
   }
 
-  getNotes(formulaireId: number): Observable<any[]> {
+  getNotes(formulaireId: string): Observable<any[]> {
   return this.http.get<any[]>(`${this.baseUrl}/notes/${formulaireId}`);
 }
 }

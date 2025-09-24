@@ -15,6 +15,7 @@
           placeholder="STD"
           name="std"
           [(ngModel)]="studentInfos.std"
+          (ngModelChange)="onStdChange()"
           class="form-control mb-1"
           required
         />
@@ -63,7 +64,7 @@
 
         <div *ngIf="q.type === 'checkbox'" class="options mb-2">
           <label *ngFor="let option of q.options" class="option-label me-3">
-            <input type="checkbox" (change)="toggleCheckbox(q.id!, option)" />
+            <input type="checkbox" (change)="toggleCheckbox(q.id!.toString(), option)" />
             {{ option }}
           </label>
         </div>

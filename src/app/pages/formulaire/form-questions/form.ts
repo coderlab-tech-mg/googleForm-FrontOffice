@@ -16,7 +16,13 @@ export class FormQuestion {
   active: boolean = false;
   questions: Question[] = [];
 
-  questionTypes: Question['type'][] = ['text', 'radio', 'checkbox', 'select'];
+  questionTypes: { value: Question['type']; label: string }[] = [
+  { value: 'text', label: 'Réponse courte' },
+  { value: 'radio', label: 'Choix unique' },
+  { value: 'checkbox', label: 'Choix multiples' },
+  { value: 'select', label: 'Liste déroulante' }
+];
+
 
   constructor(
     private service: FormulaireService,
