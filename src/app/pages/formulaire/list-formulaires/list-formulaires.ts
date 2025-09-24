@@ -25,7 +25,7 @@ export class ListFormulaires implements OnInit  {
     });
   }
 
-  openFormulaire(id: number) {
+  openFormulaire(id: string) {
     this.router.navigate(['/formulaire-reponse', id]);
   }
 }

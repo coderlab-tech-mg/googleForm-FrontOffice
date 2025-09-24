@@ -60,3 +60,64 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.create-form {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.points-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.points-group label {
+  margin: 0;
+  font-weight: bold;
+}
+
+.points-group input {
+  margin: 0;
+  padding: 4px 6px;
+  font-size: 14px;
+}
+
+.reponse-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;    
+}
+
+.reponse-group label {
+  min-width: 140px;
+  font-weight: bold;
+}
+
+.reponse-group input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 14px;
+}
+
+
+
+

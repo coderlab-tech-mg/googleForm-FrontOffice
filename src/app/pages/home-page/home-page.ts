@@ -28,7 +28,7 @@ export class HomePage implements OnInit {
     this.router.navigate(['/formQuestion']);
   }
 
-  voirNotes(formulaireId: number) {
+  voirNotes(formulaireId: string) {
     this.router.navigate(['/notes', formulaireId]);
   }
 }

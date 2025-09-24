@@ -1,13 +1,20 @@
 <div class="container mt-5">
   <h2 class="fw-bold text-primary mb-4">Notes des étudiants</h2>
-  <h2 class="fw-bold text-primary mb-4">{{formulaireTitre}}</h2>  
+  <div class="d-flex justify-content-between mb-3">
+    <button class="btn btn-secondary" (click)="goHome()">
+      ⬅ Retour
+    </button>
+    <button class="btn btn-success" (click)="exportExcel()">
+      Exporter Excel
+    </button>
+  </div>
   <table class="table table-bordered shadow-sm">
     <thead class="table-light">
       <tr>
         <th>STD</th>
         <th>Nom</th>
         <th>Prénom</th>
-        <th>Total</th>
+        <th>Notes Total</th>
       </tr>
     </thead>
     <tbody>
