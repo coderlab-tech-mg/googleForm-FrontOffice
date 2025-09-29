@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild , ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import * as Papa from 'papaparse';
 import { CommonModule } from '@angular/common'; 
 import { Router, RouterModule } from '@angular/router';
 import { FormulaireService, Question, Formulaire, QuestionOption } from '../../services/formulaire.service';
@@ -12,9 +13,11 @@ import { FormulaireService, Question, Formulaire, QuestionOption } from '../../s
   styleUrls: ['./form.css']
 })
 export class FormQuestion {
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   titre: string = '';
   active: boolean = false;
   questions: Question[] = [];
+  selectedFile: File | null = null;
 
   questionTypes: { value: Question['type']; label: string }[] = [
   { value: 'text', label: 'Réponse courte' },
@@ -29,14 +32,14 @@ export class FormQuestion {
   ) {}
 
   addQuestion() {
-  this.questions.push({ 
-    type: 'text', 
-    questionText: '', 
-    options: [], 
-    reponseCorrecte: '',
-    note: 0
-  });
-}
+    this.questions.push({ 
+      type: 'text', 
+      questionText: '', 
+      options: [], 
+      reponseCorrecte: '',
+      note: 0
+    });
+  }
 
   deleteQuestion(index: number) {
     this.questions.splice(index, 1);
@@ -55,6 +58,35 @@ export class FormQuestion {
     return index;
   }
 
+  onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  Papa.parse(file, {
+  header: true,
+  skipEmptyLines: true,
+  delimiter: ',',
+  complete: (results) => {
+    console.log('CSV parsed:', results.data);
+
+    this.questions = results.data.map((row: any) => ({
+      questionText: row['Question']?.trim() || '',
+      note: Number(row['Points']) || 0,
+      type: row['Type']?.trim() || 'text',
+      options: [
+        row['Option1'], row['Option2'], row['Option3'], row['Option4'], row['Option5']
+      ].filter((v: string) => v && v.trim() !== ''),
+      reponsesCorrectes: [
+        row['Correct1'], row['Correct2'], row['Correct3'], row['Correct4'], row['Correct5']
+      ].map((v: string) => v?.toLowerCase() === 'true')
+    }));
+
+    console.log('Questions créées:', this.questions);
+  }
+});
+
+}
+
   submit() {
     const formulaire: Formulaire = {
       titre: this.titre,
@@ -69,5 +101,5 @@ export class FormQuestion {
       },
       error: (err) => console.error(err)
     });
-  }
+  }       
 }

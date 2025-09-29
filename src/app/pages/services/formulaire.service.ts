@@ -44,4 +44,8 @@ export class FormulaireService {
   getAllFormulaire(): Observable<Formulaire> {
     return this.http.get<Formulaire>(`${this.baseUrl}/all`);
   }
+
+  importCsv(formData: FormData) {
+    return this.http.post(`${this.baseUrl}/import-csv`, formData);
+  }
 }

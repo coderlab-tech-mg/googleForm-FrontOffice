@@ -31,4 +31,5 @@ export class HomePage implements OnInit {
   voirNotes(formulaireId: string) {
     this.router.navigate(['/notes', formulaireId]);
   }
+
 }

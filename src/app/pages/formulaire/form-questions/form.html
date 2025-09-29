@@ -8,39 +8,37 @@
 
   <div *ngFor="let q of questions; let i = index" class="question-block">
     <select [(ngModel)]="q.type">
-      <option *ngFor="let type of questionTypes" [value]="type.value">
-        {{ type.label }}
-      </option>
+      <option *ngFor="let type of questionTypes" [value]="type.value">{{ type.label }}</option>
     </select>
 
     <input type="text" [(ngModel)]="q.questionText" placeholder="Votre question" />
 
     <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'">
-      <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex">
-        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option Possible" />
-        <button type="button" class="delete-btn" (click)="deleteOption(q, j)">Supprimer option</button>
+      <div *ngFor="let opt of q.options ?? []; let j = index">
+        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option possible" />
+        <button type="button" (click)="deleteOption(q, j)">Supprimer option</button>
       </div>
       <button type="button" (click)="addOption(q)">Ajouter option</button>
     </div>
 
     <div class="reponse-group">
-      <label for="reponseCorrecte">Réponse correcte :</label>
-      <input
-        type="text"
-        id="reponseCorrecte"
-        [(ngModel)]="q.reponseCorrecte"
-        placeholder="Réponse correcte"
-      />
+      <label>Réponse correcte :</label>
+      <input type="text" [(ngModel)]="q.reponseCorrecte" placeholder="Réponse correcte" />
     </div>
 
     <div class="points-group">
-      <label for="note">Points :</label>
-      <input type="number" id="note" [(ngModel)]="q.note" placeholder="Points" />
+      <label>Points :</label>
+      <input type="number" [(ngModel)]="q.note" placeholder="Points" />
     </div>
 
-    <button type="button" class="delete-btn" (click)="deleteQuestion(i)">Supprimer question</button>
+    <button type="button" (click)="deleteQuestion(i)">Supprimer question</button>
   </div>
 
-  <button type="button" (click)="addQuestion()">Ajouter question</button>
-  <button type="button" class="create-form" (click)="submit()">Créer formulaire</button>
+  <div class="buttons">
+    <button type="button" (click)="addQuestion()">Ajouter question manuellement</button>
+    <button type="button" (click)="fileInput.click()">Importer questions CSV</button>
+    <button type="button" (click)="submit()">Créer formulaire</button>
+  </div>
+
+  <input type="file" #fileInput style="display:none" accept=".csv" (change)="onFileSelected($event)" />
 </div>

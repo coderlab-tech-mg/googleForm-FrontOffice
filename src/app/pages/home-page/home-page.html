@@ -1,9 +1,14 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-5">
-    <h2 class="fw-bold text-gradient">Formulaires</h2>
-    <button class="btn btn-success shadow px-4 rounded-pill" (click)="creerFormulaire()">
-      + Créer Formulaire
-    </button>
+    <h2 class="fw-bold text-gradient m-0">Formulaires</h2>
+
+    <div class="d-flex" style="gap: 10px;">
+      <button 
+        class="btn btn-success shadow px-4 rounded-pill" 
+        (click)="creerFormulaire()">
+        + Créer Formulaire
+      </button>
+    </div>
   </div>
 
   <div *ngIf="formulaires.length > 0; else noFormulaires" class="row g-4">
@@ -27,7 +32,7 @@
   <ng-template #noFormulaires>
     <div class="alert alert-light border shadow-sm text-center py-4">
       <h5 class="mb-1">Aucun formulaire disponible</h5>
-      <p class="text-muted">Vous pouvez en créer un en cliquant sur le bouton vert ci-dessus.</p>
+      <p class="text-muted">Vous pouvez en créer ou importer en utilisant les boutons ci-dessus.</p>
     </div>
   </ng-template>
 </div>
