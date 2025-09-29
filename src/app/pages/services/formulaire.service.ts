@@ -23,7 +23,6 @@ export interface Formulaire {
   active: boolean;
 }
 
-
 @Injectable({ providedIn: 'root' })
 export class FormulaireService {
   private baseUrl = 'http://localhost:8080/google-form/formulaire';

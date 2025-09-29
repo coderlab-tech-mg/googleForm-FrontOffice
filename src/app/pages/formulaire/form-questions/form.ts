@@ -23,7 +23,6 @@ export class FormQuestion {
   { value: 'select', label: 'Liste déroulante' }
 ];
 
-
   constructor(
     private service: FormulaireService,
     private router: Router
@@ -39,17 +38,16 @@ export class FormQuestion {
   });
 }
 
-
-  supprimerQuestion(index: number) {
+  deleteQuestion(index: number) {
     this.questions.splice(index, 1);
   }
 
-  ajouterOption(q: Question) {
+  addOption(q: Question) {
     if (!q.options) q.options = [];
     q.options?.push('');
   }
 
-  supprimerOption(q: Question, i: number) {
+  deleteOption(q: Question, i: number) {
     q.options?.splice(i, 1);
   }
 

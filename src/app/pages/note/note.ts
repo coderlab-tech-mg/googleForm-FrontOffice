@@ -85,6 +85,5 @@ export class Note implements OnInit {
   XLSX.writeFile(workbook, `${this.formulaireTitre || 'notes'}-export.xlsx`);
 }
 
-  
   goHome() { this.router.navigate(['/home']);}
 }
