@@ -49,7 +49,6 @@ onStdChange() {
   }
 }
 
-
   checkAlreadyAnswered() {
     if (this.studentInfos.std && this.formulaire.id !== undefined) {
       this.reponseService

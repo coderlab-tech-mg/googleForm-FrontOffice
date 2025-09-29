@@ -18,9 +18,9 @@
     <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'">
       <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex">
         <input type="text" [(ngModel)]="q.options![j]" placeholder="Option Possible" />
-        <button type="button" class="delete-btn" (click)="supprimerOption(q, j)">Supprimer option</button>
+        <button type="button" class="delete-btn" (click)="deleteOption(q, j)">Supprimer option</button>
       </div>
-      <button type="button" (click)="ajouterOption(q)">Ajouter option</button>
+      <button type="button" (click)="addOption(q)">Ajouter option</button>
     </div>
 
     <div class="reponse-group">
@@ -33,16 +33,12 @@
       />
     </div>
 
-
-
     <div class="points-group">
       <label for="note">Points :</label>
       <input type="number" id="note" [(ngModel)]="q.note" placeholder="Points" />
     </div>
 
-
-
-    <button type="button" class="delete-btn" (click)="supprimerQuestion(i)">Supprimer question</button>
+    <button type="button" class="delete-btn" (click)="deleteQuestion(i)">Supprimer question</button>
   </div>
 
   <button type="button" (click)="addQuestion()">Ajouter question</button>
