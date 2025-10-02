@@ -12,7 +12,7 @@ export interface Question {
   type: 'text' | 'radio' | 'checkbox' | 'select';
   questionText: string;
   options?: string[];
-  reponseCorrecte?: string;
+  reponsesCorrectes?: string[];
   note?: number;
 }
 

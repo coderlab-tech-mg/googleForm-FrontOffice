@@ -1,5 +1,6 @@
 <div class="form-container">
   <h2>Créer un formulaire</h2>
+
   <input type="text" [(ngModel)]="titre" placeholder="Titre du formulaire" />
 
   <label>
@@ -7,37 +8,48 @@
   </label>
 
   <div *ngFor="let q of questions; let i = index" class="question-block">
-    <select [(ngModel)]="q.type">
-      <option *ngFor="let type of questionTypes" [value]="type.value">{{ type.label }}</option>
-    </select>
+
+    <div class="question-header">
+      <select [(ngModel)]="q.type">
+        <option *ngFor="let type of questionTypes" [value]="type.value">{{ type.label }}</option>
+      </select>
+      <button type="button" class="delete-btn" (click)="deleteQuestion(i)">Supprimer</button>
+    </div>
 
     <input type="text" [(ngModel)]="q.questionText" placeholder="Votre question" />
 
-    <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'">
-      <div *ngFor="let opt of q.options ?? []; let j = index">
+    <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'" class="options-block">
+      <label>Options :</label>
+      <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex" class="option-item">
         <input type="text" [(ngModel)]="q.options![j]" placeholder="Option possible" />
-        <button type="button" (click)="deleteOption(q, j)">Supprimer option</button>
+        <button type="button" class="delete-btn" (click)="deleteOption(q, j)">Supprimer</button>
       </div>
-      <button type="button" (click)="addOption(q)">Ajouter option</button>
+      <button type="button" class="add-btn" (click)="addOption(q)">Ajouter option</button>
     </div>
 
-    <div class="reponse-group">
-      <label>Réponse correcte :</label>
-      <input type="text" [(ngModel)]="q.reponseCorrecte" placeholder="Réponse correcte" />
-    </div>
+    <div class="reponses-block">
+  <label>Réponses correctes :</label>
+  <ul>
+    <li *ngFor="let rep of q.reponsesCorrectes ?? []; let j = index; trackBy: trackByIndex" class="correct-item">
+      <input type="text" [(ngModel)]="q.reponsesCorrectes![j]" placeholder="Réponse correcte" />
+      <button type="button" class="delete-btn" (click)="q.reponsesCorrectes!.splice(j, 1)">Supprimer</button>
+    </li>
+  </ul>
+  <button type="button" class="add-btn" (click)="q.reponsesCorrectes = q.reponsesCorrectes ?? []; q.reponsesCorrectes.push('')">Ajouter une bonne réponse</button>
+</div>
+
 
     <div class="points-group">
       <label>Points :</label>
       <input type="number" [(ngModel)]="q.note" placeholder="Points" />
     </div>
 
-    <button type="button" (click)="deleteQuestion(i)">Supprimer question</button>
   </div>
 
   <div class="buttons">
-    <button type="button" (click)="addQuestion()">Ajouter question manuellement</button>
-    <button type="button" (click)="fileInput.click()">Importer questions CSV</button>
-    <button type="button" (click)="submit()">Créer formulaire</button>
+    <button type="button" class="add-btn" (click)="addQuestion()">Ajouter question</button>
+    <button type="button" class="add-btn" (click)="fileInput.click()">Importer CSV</button>
+    <button type="button" class="create-form" (click)="submit()">Créer formulaire</button>
   </div>
 
   <input type="file" #fileInput style="display:none" accept=".csv" (change)="onFileSelected($event)" />

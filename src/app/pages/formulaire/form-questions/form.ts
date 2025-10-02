@@ -36,7 +36,7 @@ export class FormQuestion {
       type: 'text', 
       questionText: '', 
       options: [], 
-      reponseCorrecte: '',
+      reponsesCorrectes: [],
       note: 0
     });
   }
@@ -54,37 +54,46 @@ export class FormQuestion {
     q.options?.splice(i, 1);
   }
 
-  trackByIndex(index: number): number {
+  trackByIndex(index: number, item: any): number {
     return index;
   }
 
-  onFileSelected(event: any) {
+onFileSelected(event: any) {
   const file = event.target.files[0];
   if (!file) return;
 
   Papa.parse(file, {
-  header: true,
-  skipEmptyLines: true,
-  delimiter: ',',
-  complete: (results) => {
-    console.log('CSV parsed:', results.data);
+    header: true,
+    skipEmptyLines: true,
+    complete: (results) => {
+      console.log('CSV parsed:', results.data);
 
-    this.questions = results.data.map((row: any) => ({
-      questionText: row['Question']?.trim() || '',
-      note: Number(row['Points']) || 0,
-      type: row['Type']?.trim() || 'text',
-      options: [
-        row['Option1'], row['Option2'], row['Option3'], row['Option4'], row['Option5']
-      ].filter((v: string) => v && v.trim() !== ''),
-      reponsesCorrectes: [
-        row['Correct1'], row['Correct2'], row['Correct3'], row['Correct4'], row['Correct5']
-      ].map((v: string) => v?.toLowerCase() === 'true')
-    }));
+      this.questions = results.data.map((row: any) => {
+        // Récupérer les options
+        const options = [
+          row['Option1'], row['Option2'], row['Option3'], row['Option4'], row['Option5']
+        ].filter((v: string) => v && v.trim() !== '');
 
-    console.log('Questions créées:', this.questions);
-  }
-});
+        // Récupérer les réponses correctes en fonction de true/false
+        const reponsesCorrectes: string[] = [];
+        ['Correct1','Correct2','Correct3','Correct4','Correct5'].forEach((key, index) => {
+          if (row[key]?.toLowerCase() === 'true' && options[index]) {
+            reponsesCorrectes.push(options[index]);
+          }
+        });
 
+        return {
+          questionText: row['Question']?.trim() || '',
+          note: Number(row['Points']) || 0,
+          type: row['Type']?.trim() || 'text',
+          options,
+          reponsesCorrectes
+        };
+      });
+
+      console.log('Questions créées:', this.questions);
+    }
+  });
 }
 
   submit() {

@@ -1,0 +1,1405 @@
+{
+  "formId": "1lPvK4h_Z_yi00587YUBPZOevgpGp6WuqETf0EtSX-R4",
+  "info": {
+    "title": "Examen théorique API | 5 sept. 2025 ",
+    "documentTitle": "Examen théorique API | 5 sept. 2025 "
+  },
+  "items": [
+    {
+      "itemId": "3214b461",
+      "pageBreakItem": {},
+      "title": "Informations sur l'étudiant",
+      "description": "Tous les champs sont obligatoires pour cette section."
+    },
+    {
+      "itemId": "4e15f6e4",
+      "title": "Référence étudiant",
+      "questionItem": {
+        "question": {
+          "questionId": "0f3212b2",
+          "required": true,
+          "textQuestion": {}
+        }
+      }
+    },
+    {
+      "itemId": "6e81a6f1",
+      "title": "Groupe",
+      "questionItem": {
+        "question": {
+          "questionId": "441d4278",
+          "required": true,
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "K1"
+              },
+              {
+                "value": "K2"
+              },
+              {
+                "value": "K3"
+              },
+              {
+                "value": "K4"
+              },
+              {
+                "value": "K5"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "2c0c9084",
+      "title": "Nouveau Repository __PUBLIQUE__ GitHub",
+      "questionItem": {
+        "question": {
+          "questionId": "7df77143",
+          "required": true,
+          "textQuestion": {}
+        }
+      }
+    },
+    {
+      "itemId": "6e909c4b",
+      "pageBreakItem": {},
+      "title": "QCM ou Question-Réponse",
+      "description": "Toutes les questions sont facultatives."
+    },
+    {
+      "itemId": "1d2a3984",
+      "title": "C'est quoi un algorithme ?",
+      "questionItem": {
+        "question": {
+          "questionId": "1b783234",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un ensemble d'instruction"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Un code"
+              },
+              {
+                "value": "Un ensemble d'instruction"
+              },
+              {
+                "value": "Un ensemble d'algorithme"
+              },
+              {
+                "value": "Éxecution d'un ensemble d'instruction par une machine à travers un langage informatique"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "0938a7fa",
+      "title": "C'est quoi un code ?",
+      "questionItem": {
+        "question": {
+          "questionId": "2437419b",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un algorithme écrit dans un langage de programmation"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Un algorithme écrit dans un langage de programmation"
+              },
+              {
+                "value": "Une application"
+              },
+              {
+                "value": "Un ensemble d'algorithme"
+              },
+              {
+                "value": "Éxecution d'un ensemble d'instruction par une machine à travers un langage informatique"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "0224713b",
+      "title": "C'est quoi un programme ?",
+      "questionItem": {
+        "question": {
+          "questionId": "45f3f43b",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Éxecution d'un ensemble d'algorithme par une machine à travers un langage informatique"
+                },
+                {
+                  "value": "Éxecution d'un ensemble d'instruction par une machine à travers un langage informatique"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Un ensemble d'instruction"
+              },
+              {
+                "value": "Éxecution d'un ensemble d'algorithme par une machine à travers un langage informatique"
+              },
+              {
+                "value": "Un ensemble d'algorithme"
+              },
+              {
+                "value": "Éxecution d'un ensemble d'instruction par une machine à travers un langage informatique"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "7134b58f",
+      "title": "C'est quoi une application ? ",
+      "questionItem": {
+        "question": {
+          "questionId": "2c16b32a",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un programme ou un ensemble de programme destinés à éxecuter des tâches prédéfinées"
+                },
+                {
+                  "value": "Un logiciel"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Un programme ou un ensemble de programme destinés à éxecuter des tâches prédéfinées"
+              },
+              {
+                "value": "Un logiciel"
+              },
+              {
+                "value": "Terme générique utilisé pour désigner l'ensemble de programmes relatifs au bon fonctionnement d'un système informatique"
+              },
+              {
+                "isOther": true
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "18622119",
+      "title": "Un web-service c'est :",
+      "questionItem": {
+        "question": {
+          "questionId": "37a68f81",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Une solution qui permet à une application de fournir des services à une autre application à travers le web"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Une solution qui permet à une application de fournir des services à une autre application à travers le web"
+              },
+              {
+                "value": "Un service qui permet d'accéder au Web, c'est à dire à Internet"
+              },
+              {
+                "value": "Un moyen de se connecter au Web ou à Internet"
+              },
+              {
+                "value": "Un type d'application"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "743de7f4",
+      "title": "Lesquels des éléments suivants sont des frameworks permettant de développer sur plusieurs plateformes sur une même base de code ?",
+      "questionItem": {
+        "question": {
+          "questionId": "514c94ff",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Flutter"
+                },
+                {
+                  "value": "React native"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Flutter"
+              },
+              {
+                "value": "React JS"
+              },
+              {
+                "value": "React native"
+              },
+              {
+                "value": "FastAPI"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "5217afd6",
+      "title": "Un RFC, c'est : ",
+      "questionItem": {
+        "question": {
+          "questionId": "4753b4ed",
+          "grading": {
+            "pointValue": 5,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un ensemble de documents qui permettent de définir et spécifier les standards utilisés pour la communication entre plusieurs machines ou applications"
+                },
+                {
+                  "value": "Un ensemble de documents qui permettent de définir et spécifier les standards utilisés et liés à Internet"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Un ensemble de règles et de convention qui définissent le moyen de communication entre plusieurs machines"
+              },
+              {
+                "value": "Un ensemble de documents qui permettent de définir et spécifier les standards utilisés pour la communication entre plusieurs machines ou applications"
+              },
+              {
+                "value": "Un ensemble de documents qui permettent de définir et spécifier les standards utilisés et liés à Internet"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "7a9c7b5c",
+      "title": "Un RFC est au format :  ",
+      "questionItem": {
+        "question": {
+          "questionId": "77af4487",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "RFCXXXX où XXXX est une suite de nombre"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "RFCXXXX où XXXX est une suite de nombre"
+              },
+              {
+                "value": "RFCXXXX où XXXX est une suite d'alphabets"
+              },
+              {
+                "value": "RFCXXXX où XXXX est une suite d'alpha-numériques"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "3e2916c0",
+      "title": " Le codage MIME est utilisé pour : ",
+      "questionItem": {
+        "question": {
+          "questionId": "7dc21baf",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Décrire le type d'un document envoyé"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Décrire le type d'un document envoyé"
+              },
+              {
+                "value": "Permettre d'envoyer et d'encoder des documents"
+              },
+              {
+                "value": "Décrier les technologies liées au protocole HTTP"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "51206774",
+      "title": "Un protocole ou protocole de communication c'est :",
+      "questionItem": {
+        "question": {
+          "questionId": "71509488",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un ensemble de règles et de convention qui définissent le moyen de communication entre plusieurs machines"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Un ensemble de règles et de convention qui définissent le moyen de communication entre plusieurs machines"
+              },
+              {
+                "value": "Un ensemble de démarche à suivre pour résoudre un problème"
+              },
+              {
+                "value": "Un langage de signe pour les machines"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "61c101c8",
+      "title": "Le protocole HTTP est un protocole au niveau de la couche OSI",
+      "questionItem": {
+        "question": {
+          "questionId": "0b96cc65",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Niveau 7"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Niveau 7"
+              },
+              {
+                "value": "Niveau 6"
+              },
+              {
+                "value": "Niveau 3"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "7aaad5fe",
+      "title": "Le protocole HTTP a pour objectif de : ",
+      "questionItem": {
+        "question": {
+          "questionId": "30dd2ce7",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Permettre à une application dite client, d'envoyer des données à une autre application dite serveur"
+                },
+                {
+                  "value": "Permettre d'échanger des données à travers le Web"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Permettre à une machine d'envoyer des trames de données à une autre machine"
+              },
+              {
+                "value": "Permettre à une application dite client, d'envoyer des données à une autre application dite serveur"
+              },
+              {
+                "value": "Permettre d'échanger des données à travers le Web"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "5fac88b3",
+      "title": "Le protocole HTTP est basé sur le protocole réseau : ",
+      "questionItem": {
+        "question": {
+          "questionId": "7d93f54e",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "TCP/IP"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "HTTP"
+              },
+              {
+                "value": "TCP/IP"
+              },
+              {
+                "value": "UDP"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "4a4001f3",
+      "title": "Le protocole TCP/IP permet de :",
+      "questionItem": {
+        "question": {
+          "questionId": "43c8dbb8",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Contrôler et sécuriser les trames de données échangées entre un destinataire un expéditeur"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Contrôler et sécuriser les trames de données échangées entre un destinataire un expéditeur"
+              },
+              {
+                "value": "Emettre le plus rapidement possible des données lors d'une échange entre un destinataire et un expéditeur"
+              },
+              {
+                "value": "D'encrypter les données entre un client et un serveur"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "7e629e0b",
+      "title": "Le protocole UPD permet de :",
+      "questionItem": {
+        "question": {
+          "questionId": "466c003a",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Contrôler et sécuriser les trames de données échangées entre un destinataire un expéditeur"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Contrôler et sécuriser les trames de données échangées entre un destinataire un expéditeur"
+              },
+              {
+                "value": "Emettre le plus rapidement possible des données lors d'une échange entre un destinataire et un expéditeur"
+              },
+              {
+                "value": "D'encrypter les données entre un client et un serveur"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "59d4d4ea",
+      "title": "Dans le cadre du protocole HTTP,  comment appelle t-on les acteurs concernés ?",
+      "questionItem": {
+        "question": {
+          "questionId": "58933bd6",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Le client"
+                },
+                {
+                  "value": "Le serveur"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Le navigateur"
+              },
+              {
+                "value": "Le client"
+              },
+              {
+                "value": "Postman"
+              },
+              {
+                "value": "Le serveur"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "080adcc3",
+      "title": "De quoi est composé une requête HTTP ?",
+      "questionItem": {
+        "question": {
+          "questionId": "0e6ee049",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Une entête, un payload et une ligne de requête"
+                },
+                {
+                  "value": "Une entête, un corps de requête et une ligne de requête"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Une entête, un payload et une ligne de requête"
+              },
+              {
+                "value": "Un verbe HTTP, une entête et un corps de requête"
+              },
+              {
+                "value": "Une entête, un corps de requête et une ligne de requête"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "1cf537a5",
+      "title": "De quoi est composé une réponse HTTP ?",
+      "questionItem": {
+        "question": {
+          "questionId": "55eb8b35",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un corps de réponse, une entête et une ligne de réponse"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Une code de statut, une entête et un corps de réponse"
+              },
+              {
+                "value": "Un corps de réponse, une entête et une ligne de réponse"
+              },
+              {
+                "value": "Une entête, un payload et une ligne de réponse"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "50e64668",
+      "title": "Lequel des verbes HTTP suivants n'existe pas ?",
+      "questionItem": {
+        "question": {
+          "questionId": "4d420ee4",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Ils existent tous"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "OPTIONS"
+              },
+              {
+                "value": "GET"
+              },
+              {
+                "value": "DELETE"
+              },
+              {
+                "value": "TRACE"
+              },
+              {
+                "value": "Ils existent tous"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "2fda99d3",
+      "title": "Le verbe HTTP POST permet de :",
+      "questionItem": {
+        "question": {
+          "questionId": "38e2de4e",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Modifier l'état du serveur"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Obtenir la représentation d'une ressource ou les informations supplémentaires lui concernant"
+              },
+              {
+                "value": "Modifier l'état du serveur"
+              },
+              {
+                "value": "Modifier une ressource intégralement ou partiellement"
+              },
+              {
+                "value": "Supprimer une ressource"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "13954b1e",
+      "title": "Le verbe HTTP DELETE permet de :",
+      "questionItem": {
+        "question": {
+          "questionId": "50d0b0bd",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Supprimer une ressource"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Obtenir la représentation d'une ressource ou les informations supplémentaires lui concernant"
+              },
+              {
+                "value": "Modifier l'état du serveur"
+              },
+              {
+                "value": "Modifier une ressource intégralement ou partiellement"
+              },
+              {
+                "value": "Supprimer une ressource"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "6258dd1b",
+      "title": "Le code de statut 202 désigne que :",
+      "questionItem": {
+        "question": {
+          "questionId": "0824a3c7",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La requête a été acceptée sans garantie que le traitement demandé réussisse"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La requête a été traitée avec succès"
+              },
+              {
+                "value": "La ressource a bien été créée"
+              },
+              {
+                "value": "La requête a été acceptée sans garantie que le traitement demandé réussisse"
+              },
+              {
+                "value": "La ressource demandée n'est plus disponible au serveur demandé mais redirigée ailleurs"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "6a98d27f",
+      "title": "Le code de statut 302 désigne que :",
+      "questionItem": {
+        "question": {
+          "questionId": "36e5ce4f",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La ressource demandée n'est plus disponible au serveur demandé mais redirigée ailleurs"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La requête a été traitée avec succès"
+              },
+              {
+                "value": "Le serveur a rencontré une erreur au moment du traitement de la requête"
+              },
+              {
+                "value": "La requête a été mal formulée et le serveur n'a pas pu traité la requête"
+              },
+              {
+                "value": "La ressource demandée n'est plus disponible au serveur demandé mais redirigée ailleurs"
+              },
+              {
+                "value": "La ressource demandé n'existe pas ou n'a pas été trouvée"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "70a42f96",
+      "title": "Le code de statut 405 désigne que :",
+      "questionItem": {
+        "question": {
+          "questionId": "7a443d55",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La méthode de requête utilisée n'est pas supportée"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La requête a été traitée avec succès"
+              },
+              {
+                "value": "Le serveur a rencontré une erreur au moment du traitement de la requête"
+              },
+              {
+                "value": "La requête a été mal formulée et le serveur n'a pas pu traité la requête"
+              },
+              {
+                "value": "La méthode de requête utilisée n'est pas supportée"
+              },
+              {
+                "value": "La ressource demandé n'existe pas ou n'a pas été trouvée"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "480713a5",
+      "title": "Le code de statut 503 désigne que :",
+      "questionItem": {
+        "question": {
+          "questionId": "6ead94c8",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Le service est temporairement indisponible ou en maintenance."
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La requête a été traitée avec succès"
+              },
+              {
+                "value": "Le service est temporairement indisponible ou en maintenance."
+              },
+              {
+                "value": "La requête a été mal formulée et le serveur n'a pas pu traité la requête"
+              },
+              {
+                "value": "La ressource demandée n'est plus disponible au serveur demandé mais redirigée ailleurs"
+              },
+              {
+                "value": "La ressource demandé n'existe pas ou n'a pas été trouvée"
+              }
+            ],
+            "shuffle": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "3526f550",
+      "title": "Le signification du code de statut 503 c'est ",
+      "questionItem": {
+        "question": {
+          "questionId": "4ad21e76",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "SERVICE UNAVAILABLE"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "INTERNAL SERVER ERROR"
+              },
+              {
+                "value": "NOT FOUND"
+              },
+              {
+                "value": "OK"
+              },
+              {
+                "value": "SERVICE UNAVAILABLE"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "09b508a7",
+      "title": "Une ressource HTTP c'est :",
+      "questionItem": {
+        "question": {
+          "questionId": "79522ab5",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Le cible d'une requête HTTP"
+                },
+                {
+                  "value": "Un document non typé hebergé sur un serveur et accessible via un URI"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Le cible d'une requête HTTP"
+              },
+              {
+                "value": "Un document non typé hebergé sur un serveur et accessible via un URI"
+              },
+              {
+                "value": "Une URL"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "3882b25b",
+      "title": "Pourquoi le protocole HTTPS est il sécurisé ?",
+      "questionItem": {
+        "question": {
+          "questionId": "36e93bea",
+          "textQuestion": {
+            "paragraph": true
+          }
+        }
+      }
+    },
+    {
+      "itemId": "1481d0d1",
+      "title": "C'est quoi FastAPI",
+      "questionItem": {
+        "question": {
+          "questionId": "72e70988",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un framework"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Un langage de programmation"
+              },
+              {
+                "value": "Un framework"
+              },
+              {
+                "value": "Un serveur"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "1e31737d",
+      "title": "Que permet de faire FastAPI ?",
+      "questionItem": {
+        "question": {
+          "questionId": "0ecde25a",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Créer un web-service"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Créer un logiciel"
+              },
+              {
+                "value": "Créer une application"
+              },
+              {
+                "value": "Créer un web-service"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "6c58262c",
+      "title": "Sur FastAPI, lesquelles de ces routes sont correctes, si on considère que `app` est une instance de l'application Fast",
+      "questionItem": {
+        "question": {
+          "questionId": "0f11724f",
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "@app.get(\"/ma-route\")"
+              },
+              {
+                "value": "@get(\"/root\")"
+              },
+              {
+                "value": "@app.delete(\"/students\")"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "09afd84f",
+      "title": "FastAPI est un framework basé sur quel langage ?",
+      "questionItem": {
+        "question": {
+          "questionId": "128d417a",
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Javascript"
+              },
+              {
+                "value": "Java"
+              },
+              {
+                "value": "Python"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "1f8f23e9",
+      "title": "Pour une application ayant actuellement la version 3.1.0, le \"1\" correspond à :",
+      "questionItem": {
+        "question": {
+          "questionId": "75928ba1",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La version mineure"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La version majeure"
+              },
+              {
+                "value": "La version mineure"
+              },
+              {
+                "value": "La version patch"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "5879051a",
+      "title": "Pour une application ayant actuellement la version 3.1.0, le \"3\" correspond à :",
+      "questionItem": {
+        "question": {
+          "questionId": "365d4c3d",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La version majeure"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La version majeure"
+              },
+              {
+                "value": "La version mineure"
+              },
+              {
+                "value": "La version patch"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "28027fad",
+      "title": "Pour une application ayant actuellement la version 3.1.0, le \"0\" correspond à :",
+      "questionItem": {
+        "question": {
+          "questionId": "101214b3",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "La version patch"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "La version majeure"
+              },
+              {
+                "value": "La version mineure"
+              },
+              {
+                "value": "La version patch"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "5106de99",
+      "title": "Une mise à jour est dite un \"fix\" lorsqu'elle comprend :",
+      "questionItem": {
+        "question": {
+          "questionId": "54a7275a",
+          "grading": {
+            "pointValue": 3,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Des améliorations de performance ou optimisation de l'apps"
+                },
+                {
+                  "value": "Des correctifs"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "De nouvelles fonctionnalités utilisant le verbe PATCH"
+              },
+              {
+                "value": "Des améliorations de performance ou optimisation de l'apps"
+              },
+              {
+                "value": "Des correctifs"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "5f4477a4",
+      "title": "Continuez la phrase : \n\"Une mise à jour est dite majeure lorsqu'elle ...\" ",
+      "questionItem": {
+        "question": {
+          "questionId": "02ccc965",
+          "grading": {
+            "pointValue": 3
+          },
+          "textQuestion": {}
+        }
+      }
+    },
+    {
+      "itemId": "724ea277",
+      "title": "C'est quoi OpenAPI ?",
+      "questionItem": {
+        "question": {
+          "questionId": "53518997",
+          "grading": {
+            "pointValue": 2,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Un langage qui permet de spécifier un API"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "RADIO",
+            "options": [
+              {
+                "value": "Un langage qui permet de créer un API"
+              },
+              {
+                "value": "Un langage qui permet de spécifier un API"
+              },
+              {
+                "value": "Un API ouvert"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "25338356",
+      "title": "Pourquoi une documentation est essentielle pour un API ?",
+      "questionItem": {
+        "question": {
+          "questionId": "78ff6b6f",
+          "grading": {
+            "pointValue": 2,
+            "correctAnswers": {
+              "answers": [
+                {
+                  "value": "Car elle permet aux développeurs de comprendre les services ou données fournies par l'API"
+                },
+                {
+                  "value": "Car elle permet aux développeurs d'exploiter les services ou données fournies par l'API"
+                }
+              ]
+            }
+          },
+          "choiceQuestion": {
+            "type": "CHECKBOX",
+            "options": [
+              {
+                "value": "Car elle permet aux développeurs de comprendre les services ou données fournies par l'API"
+              },
+              {
+                "value": "Car elle permet aux développeurs d'exploiter les services ou données fournies par l'API"
+              },
+              {
+                "value": "Car elle permet aux développeurs de copier un API"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "itemId": "602b1141",
+      "title": "Quel était le nom de la spécification OpenAPI à la version 2 ?",
+      "questionItem": {
+        "question": {
+          "questionId": "4c583826",
+          "textQuestion": {}
+        }
+      }
+    }
+  ]
+}

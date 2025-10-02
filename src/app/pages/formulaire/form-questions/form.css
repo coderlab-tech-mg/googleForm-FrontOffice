@@ -14,8 +14,9 @@
   color: #333;
 }
 
-.form-container input[type="text"],
-.form-container select {
+input[type="text"],
+input[type="number"],
+select {
   width: 100%;
   padding: 8px 10px;
   margin: 5px 0 15px 0;
@@ -24,14 +25,14 @@
   box-sizing: border-box;
 }
 
-.form-container label {
+label {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
   font-weight: bold;
 }
 
-.form-container label input[type="checkbox"] {
+label input[type="checkbox"] {
   margin-right: 10px;
 }
 
@@ -43,81 +44,138 @@
   background-color: #fff;
 }
 
-.question-block button {
-  margin-top: 5px;
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 15px;
+  padding: 6px 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
-  margin-right: 10px;
+  margin-top: -8px;
 }
 
-button:hover {
-  background-color: #0056b3;
+button.add-btn,
+button.create-form {
+  background-color: #28a745;
+  color: white;
 }
 
-.delete-btn {
+button.add-btn:hover,
+button.create-form:hover {
+  background-color: #218838;
+}
+
+button.delete-btn {
   background-color: #dc3545;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-.delete-btn:hover {
+button.delete-btn:hover {
   background-color: #c82333;
 }
 
-.create-form {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.option-item,
+.correct-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.correct-item input {
+  background-color: #e6ffe6;
+  border: 1px solid #28a745;
+  color: #155724;
 }
 
 .points-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .points-group label {
-  margin: 0;
   font-weight: bold;
+  line-height: 1.5;
 }
 
-.points-group input {
-  margin: 0;
-  padding: 4px 6px;
+.points-group input[type="number"] {
+  flex: 1;
+  padding: 6px 8px;
   font-size: 14px;
 }
 
-.reponse-group {
+
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+button.add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+button.add-btn:hover {
+  background-color: #218838;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: #c82333;
+}
+
+button.create-form {
+  background-color: #007bff;
+  color: white;
+}
+
+button.create-form:hover {
+  background-color: #0056b3;
+}
+
+.buttons button {
+  min-width: 150px;
+}
+
+.options-block button.add-btn,
+.reponses-block button.add-btn {
+  margin-top: 8px;
+}
+
+.reponses-block {
+  margin-top: 15px;
+}
+
+.reponses-block label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.reponses-block ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.reponses-block li {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;    
+  margin-bottom: 6px;
 }
-
-.reponse-group label {
-  min-width: 140px;
-  font-weight: bold;
-}
-
-.reponse-group input {
-  flex: 1;
-  padding: 4px 6px;
-  font-size: 14px;
-}
-
-
-
 
