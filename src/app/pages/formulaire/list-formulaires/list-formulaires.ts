@@ -19,11 +19,14 @@ export class ListFormulaires implements OnInit  {
   }
 
   loadFormulaires() {
-    this.service.getActiveFormulaires().subscribe({
-      next: (data) => this.formulaires = data,
-      error: (err) => console.error(err)
-    });
-  }
+  this.service.getActiveFormulaires().subscribe({
+    next: (data) => {
+      console.log('Formulaires reçus :', data);
+      this.formulaires = data;
+    },
+    error: (err) => console.error(err)
+  });
+}
 
   openFormulaire(id: string) {
     this.router.navigate(['/formulaire-reponse', id]);

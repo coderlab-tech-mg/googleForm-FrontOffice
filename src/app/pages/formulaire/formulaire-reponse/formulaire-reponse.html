@@ -1,84 +1,63 @@
 <div class="container">
   <div class="formulaire-card">
     <h2>{{ formulaire.titre }}</h2>
+    
     <div *ngIf="showAlert && (!studentInfos.std || !studentInfos.nom || !studentInfos.prenom)" 
          class="alert alert-danger">
       Veuillez remplir toutes vos informations (STD, Nom, Prénom).
     </div>
 
     <form #form="ngForm" (ngSubmit)="submit($event)" novalidate>
+      <!-- Informations étudiant -->
       <div class="student-info">
         <h3>Vos informations</h3>
-
-        <input
-          type="text"
-          placeholder="STD"
-          name="std"
-          [(ngModel)]="studentInfos.std"
-          (ngModelChange)="onStdChange()"
-          class="form-control mb-1"
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Nom"
-          name="nom"
-          [(ngModel)]="studentInfos.nom"
-          class="form-control mb-1"
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Prénom"
-          name="prenom"
-          [(ngModel)]="studentInfos.prenom"
-          class="form-control mb-3"
-          required
-        />
+        <input type="text" placeholder="STD" name="std" [(ngModel)]="studentInfos.std"
+               (ngModelChange)="onStdChange()" class="form-control mb-1" required />
+        <input type="text" placeholder="Nom" name="nom" [(ngModel)]="studentInfos.nom"
+               class="form-control mb-1" required />
+        <input type="text" placeholder="Prénom" name="prenom" [(ngModel)]="studentInfos.prenom"
+               class="form-control mb-3" required />
       </div>
 
-      <div *ngFor="let q of formulaire.questions" class="question">
-        <label class="question-text">{{ q.questionText }}</label>
+      <!-- Boucle sur les sections -->
+      <div *ngFor="let section of formulaire.sections" class="section-block mb-3">
+        <h3>{{ section.titre }}</h3>
 
-        <input
-          *ngIf="q.type === 'text'"
-          type="text"
-          [(ngModel)]="reponseMap[q.id!]"
-          [name]="'q' + q.id"
-          class="form-control mb-2"
-        />
+        <!-- Boucle sur les questions de la section -->
+        <div *ngFor="let q of section.questions" class="question mb-3">
+          <label class="question-text">{{ q.questionText }}</label>
 
-        <div *ngIf="q.type === 'radio'" class="options mb-2">
-          <label *ngFor="let option of q.options" class="option-label me-3">
-            <input
-              type="radio"
-              [name]="'q' + q.id"
-              [value]="option"
-              [(ngModel)]="reponseMap[q.id!]"
-            />
-            {{ option }}
-          </label>
+          <input *ngIf="q.type === 'text'" type="text"
+                 [(ngModel)]="reponseMap[q.id || q.questionText]"
+                 [name]="'q' + (q.id || q.questionText)"
+                 class="form-control mb-2" />
+
+          <div *ngIf="q.type === 'radio'" class="options mb-2">
+            <label *ngFor="let option of q.options" class="option-label me-3">
+              <input type="radio"
+                     [name]="'q' + (q.id || q.questionText)"
+                     [value]="option"
+                     [(ngModel)]="reponseMap[q.id || q.questionText]" />
+              {{ option }}
+            </label>
+          </div>
+
+          <div *ngIf="q.type === 'checkbox'" class="options mb-2">
+            <label *ngFor="let option of q.options" class="option-label me-3">
+              <input type="checkbox" (change)="toggleCheckbox(q.id || q.questionText, option)" />
+              {{ option }}
+            </label>
+          </div>
+
+          <select *ngIf="q.type === 'select'"
+                  [(ngModel)]="reponseMap[q.id || q.questionText]"
+                  [name]="'q' + (q.id || q.questionText)"
+                  class="form-select mb-3">
+            <option *ngFor="let option of q.options">{{ option }}</option>
+          </select>
+
+          <hr />
         </div>
-
-        <div *ngIf="q.type === 'checkbox'" class="options mb-2">
-          <label *ngFor="let option of q.options" class="option-label me-3">
-            <input type="checkbox" (change)="toggleCheckbox(q.id!.toString(), option)" />
-            {{ option }}
-          </label>
-        </div>
-
-        <select
-          *ngIf="q.type === 'select'"
-          [(ngModel)]="reponseMap[q.id!]"
-          [name]="'q' + q.id"
-          class="form-select mb-3"
-        >
-          <option *ngFor="let option of q.options">{{ option }}</option>
-        </select>
-
-        <hr />
       </div>
 
       <div class="btn-container mt-3" *ngIf="!alreadyAnswered">

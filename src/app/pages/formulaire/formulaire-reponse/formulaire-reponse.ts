@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReponseService, SubmitFormulaireRequest, ReponseQuestionRequest } from '../../services/reponse.service';
-import { Formulaire, FormulaireService, Question } from '../../services/formulaire.service';
+import { Formulaire, FormulaireService, Section, Question } from '../../services/formulaire.service';
 
 @Component({
   selector: 'app-formulaire-reponse',
@@ -14,7 +14,7 @@ import { Formulaire, FormulaireService, Question } from '../../services/formulai
 })
 export class FormulaireReponse implements OnInit {
   formulaire!: Formulaire;
-  reponseMap: { [questionId: string]: string | string[] } = {};
+  reponseMap: { [key: string]: string | string[] } = {};
   studentInfos: { std: string; nom: string; prenom: string } = { std: '', nom: '', prenom: '' };
   alreadyAnswered = false;
   submitting = false;
@@ -28,59 +28,59 @@ export class FormulaireReponse implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  const id = this.route.snapshot.paramMap.get('id');
-  if (id) {
-    this.formulaireService.getFormulaireById(id).subscribe({
-      next: data => {
-        this.formulaire = data;
-        this.formulaire.questions.forEach(q => {
-          this.reponseMap[q.id!] = q.type === 'checkbox' ? [] : '';
-        });
-      },
-      error: err => console.error(err)
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.formulaireService.getFormulaireById(id).subscribe({
+        next: data => {
+          this.formulaire = data;
+          this.formulaire.sections.forEach((section: Section) => {
+            section.questions.forEach((q: Question) => {
+              const key = q.id || q.questionText;
+              this.reponseMap[key] = q.type === 'checkbox' ? [] : '';
+            });
+          });
+        },
+        error: err => console.error(err)
+      });
+    }
   }
-}
 
-onStdChange() {
-  if (this.studentInfos.std && this.formulaire?.id) {
-    this.reponseService.hasAlreadyAnswered(this.studentInfos.std, this.formulaire.id)
-      .subscribe(res => this.alreadyAnswered = res);
-  }
-}
-
-  checkAlreadyAnswered() {
-    if (this.studentInfos.std && this.formulaire.id !== undefined) {
-      this.reponseService
-        .hasAlreadyAnswered(this.studentInfos.std, this.formulaire.id)
+  onStdChange() {
+    if (this.studentInfos.std && this.formulaire?.id) {
+      this.reponseService.hasAlreadyAnswered(this.studentInfos.std, this.formulaire.id)
         .subscribe(res => this.alreadyAnswered = res);
     }
   }
 
-  toggleCheckbox(qId: string, option: string) {
-    const arr = this.reponseMap[qId] as string[];
+  toggleCheckbox(key: string, option: string) {
+    const arr = this.reponseMap[key] as string[];
     const index = arr.indexOf(option);
     if (index === -1) arr.push(option);
     else arr.splice(index, 1);
   }
 
   submit(event: Event) {
-    this.showAlert = true;
-    if (!this.studentInfos.std || !this.studentInfos.nom || !this.studentInfos.prenom){
+    if (!this.studentInfos.std || !this.studentInfos.nom || !this.studentInfos.prenom) {
       this.showAlert = true;
       event.preventDefault();
       return;
     }
     if (!this.formulaire.id) return;
 
-    const reponses: ReponseQuestionRequest[] = this.formulaire.questions.map(q => ({
-      questionId: q.id!,
-      questionText: q.questionText,
-      answer: this.reponseMap[q.id!]
-    }));
+    const reponses: ReponseQuestionRequest[] = [];
+    this.formulaire.sections.forEach(section => {
+      section.questions.forEach(q => {
+        const key = q.id || q.questionText;
+        reponses.push({
+          questionId: q.id!,
+          questionText: q.questionText,
+          answer: this.reponseMap[key]
+        });
+      });
+    });
 
     const payload: SubmitFormulaireRequest = {
-      formulaireId: this.formulaire.id!,
+      formulaireId: this.formulaire.id,
       studentInfos: this.studentInfos,
       reponses
     };
@@ -88,7 +88,7 @@ onStdChange() {
     this.submitting = true;
     this.reponseService.submitReponse(payload).subscribe({
       next: () => {
-        alert('Réponses envoyées!');
+        alert('Réponses envoyées !');
         this.alreadyAnswered = true;
         this.submitting = false;
       },

@@ -7,6 +7,14 @@ export interface QuestionOption {
   value: string;
 }
 
+export interface Section {
+  id?: string;
+  titre: string;
+  questions: Question[];
+  formulaireID?: string;
+  ordre?: number; 
+}
+
 export interface Question {
   id?: string;
   type: 'text' | 'radio' | 'checkbox' | 'select';
@@ -14,12 +22,15 @@ export interface Question {
   options?: string[];
   reponsesCorrectes?: string[];
   note?: number;
+  formulaireID?: string;
+  sectionID?: string;
+  ordre?: number;  
 }
 
 export interface Formulaire {
   id?: string;          
   titre: string;
-  questions: Question[];
+  sections: Section[];
   active: boolean;
 }
 
@@ -29,9 +40,13 @@ export class FormulaireService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  createFormulaire(data: Formulaire): Observable<any> {
-    return this.http.post(`${this.baseUrl}/create`, data);
-  }
+  createFormulaire(formulaire: Formulaire) {
+  return this.http.post<Formulaire>(
+    `${this.baseUrl}/create`,
+    formulaire,
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+}
 
   getActiveFormulaires(): Observable<Formulaire[]> {
   return this.http.get<Formulaire[]>(`${this.baseUrl}/list-active`);

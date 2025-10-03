@@ -17,6 +17,7 @@ export class FormQuestion {
   titre: string = '';
   active: boolean = false;
   questions: Question[] = [];
+  sections: any[] = [];
   selectedFile: File | null = null;
 
   questionTypes: { value: Question['type']; label: string }[] = [
@@ -31,18 +32,21 @@ export class FormQuestion {
     private router: Router
   ) {}
 
-  addQuestion() {
-    this.questions.push({ 
-      type: 'text', 
-      questionText: '', 
-      options: [], 
-      reponsesCorrectes: [],
-      note: 0
-    });
+  addQuestionToSection(section: any) {
+  if (!section.questions) {
+    section.questions = [];
   }
+  section.questions.push({
+    type: 'text',
+    questionText: '',
+    options: [],
+    reponsesCorrectes: [],
+    note: 0
+  });
+}
 
-  deleteQuestion(index: number) {
-    this.questions.splice(index, 1);
+  deleteQuestion(section: any, index: number) {
+    section.questions.splice(index, 1);
   }
 
   addOption(q: Question) {
@@ -58,7 +62,18 @@ export class FormQuestion {
     return index;
   }
 
-onFileSelected(event: any) {
+  addSection() {
+    this.sections.push({
+      titre: '',
+      questions: []
+    });
+  }
+
+  deleteSection(index: number) {
+    this.sections.splice(index, 1);
+  }
+
+  onFileSelected(event: any) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -68,13 +83,22 @@ onFileSelected(event: any) {
     complete: (results) => {
       console.log('CSV parsed:', results.data);
 
-      this.questions = results.data.map((row: any) => {
-        // Récupérer les options
+      const sectionMap: { [key: string]: any } = {};
+      this.sections = [];
+
+      results.data.forEach((row: any) => {
+        const sectionTitle = row['Section']?.trim() || 'Sans section';
+        let section = sectionMap[sectionTitle];
+        if (!section) {
+          section = { titre: sectionTitle, questions: [] };
+          sectionMap[sectionTitle] = section;
+          this.sections.push(section);
+        }
+
         const options = [
           row['Option1'], row['Option2'], row['Option3'], row['Option4'], row['Option5']
         ].filter((v: string) => v && v.trim() !== '');
 
-        // Récupérer les réponses correctes en fonction de true/false
         const reponsesCorrectes: string[] = [];
         ['Correct1','Correct2','Correct3','Correct4','Correct5'].forEach((key, index) => {
           if (row[key]?.toLowerCase() === 'true' && options[index]) {
@@ -82,33 +106,49 @@ onFileSelected(event: any) {
           }
         });
 
-        return {
+        const question: Question = {
           questionText: row['Question']?.trim() || '',
           note: Number(row['Points']) || 0,
           type: row['Type']?.trim() || 'text',
           options,
           reponsesCorrectes
         };
+
+        section.questions.push(question);
       });
 
-      console.log('Questions créées:', this.questions);
+      console.log('Sections créées avec questions :', this.sections);
     }
   });
 }
 
-  submit() {
-    const formulaire: Formulaire = {
-      titre: this.titre,
-      active: this.active,
-      questions: this.questions
-    };
 
-    this.service.createFormulaire(formulaire).subscribe({
-      next: () => {
-        alert('Formulaire créé !');
-        this.router.navigate(['/list-formulaires']);
-      },
-      error: (err) => console.error(err)
-    });
-  }       
+submit() {
+  console.log('Formulaire à envoyer :', {
+    titre: this.titre,
+    active: this.active,
+    sections: this.sections
+  });
+  this.sections.forEach((section, sIndex) => {
+    console.log(`Section ${sIndex + 1}:`, section.titre);
+    if (section.questions) {
+      section.questions.forEach((q: Question, qIndex: number) => {
+        console.log(`  Question ${qIndex + 1}:`, q.questionText, 'Type:', q.type, 'Options:', q.options, 'Réponses correctes:', q.reponsesCorrectes);
+      });
+    }
+  });
+  const formulaire: Formulaire = {
+    titre: this.titre,
+    active: this.active,
+    sections: this.sections
+  };
+
+  this.service.createFormulaire(formulaire).subscribe({
+    next: () => {
+      alert('Formulaire créé !');
+      this.router.navigate(['/list-formulaires']);
+    },
+    error: (err) => console.error(err)
+  });
+}
 }

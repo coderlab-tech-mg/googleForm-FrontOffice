@@ -9,6 +9,7 @@ export interface StudentInfos {
 }
 
 export interface ReponseQuestionRequest {
+  questionId: string; 
   questionText: string;
   answer: string | string[];
 }

@@ -7,47 +7,56 @@
     <input type="checkbox" [(ngModel)]="active" /> Activer le formulaire
   </label>
 
-  <div *ngFor="let q of questions; let i = index" class="question-block">
+  <div *ngFor="let section of sections; let sIndex = index" class="section-block">
+    <h3>
+      Section :
+      <input type="text" [(ngModel)]="section.titre" placeholder="Titre de la section" />
+      <button type="button" class="delete-btn" (click)="deleteSection(sIndex)">Supprimer section</button>
+    </h3>
 
-    <div class="question-header">
-      <select [(ngModel)]="q.type">
-        <option *ngFor="let type of questionTypes" [value]="type.value">{{ type.label }}</option>
-      </select>
-      <button type="button" class="delete-btn" (click)="deleteQuestion(i)">Supprimer</button>
-    </div>
-
-    <input type="text" [(ngModel)]="q.questionText" placeholder="Votre question" />
-
-    <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'" class="options-block">
-      <label>Options :</label>
-      <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex" class="option-item">
-        <input type="text" [(ngModel)]="q.options![j]" placeholder="Option possible" />
-        <button type="button" class="delete-btn" (click)="deleteOption(q, j)">Supprimer</button>
+    <div *ngFor="let q of section.questions; let i = index" class="question-block">
+      <div class="question-header">
+        <select [(ngModel)]="q.type">
+          <option *ngFor="let type of questionTypes" [value]="type.value">{{ type.label }}</option>
+        </select>
+        <button type="button" class="delete-btn" (click)="deleteQuestion(section, i)">Supprimer</button>
       </div>
-      <button type="button" class="add-btn" (click)="addOption(q)">Ajouter option</button>
+
+      <input type="text" [(ngModel)]="q.questionText" placeholder="Votre question" />
+
+      <div *ngIf="q.type === 'radio' || q.type === 'checkbox' || q.type === 'select'" class="options-block">
+        <label>Options :</label>
+        <div *ngFor="let opt of q.options ?? []; let j = index; trackBy: trackByIndex" class="option-item">
+          <input type="text" [(ngModel)]="q.options![j]" placeholder="Option possible" />
+          <button type="button" class="delete-btn" (click)="deleteOption(q, j)">Supprimer</button>
+        </div>
+        <button type="button" class="add-btn" (click)="addOption(q)">Ajouter option</button>
+      </div>
+
+      <div class="reponses-block">
+        <label>Réponses correctes :</label>
+        <ul>
+          <li *ngFor="let rep of q.reponsesCorrectes ?? []; let j = index; trackBy: trackByIndex" class="correct-item">
+            <input type="text" [(ngModel)]="q.reponsesCorrectes![j]" placeholder="Réponse correcte" />
+            <button type="button" (click)="q.reponsesCorrectes!.splice(j, 1)">Supprimer</button>
+          </li>
+        </ul>
+        <button type="button" class="add-btn" (click)="q.reponsesCorrectes = q.reponsesCorrectes ?? []; q.reponsesCorrectes.push('')">
+          Ajouter une bonne réponse
+        </button>
+      </div>
+
+      <div class="points-group">
+        <label>Points :</label>
+        <input type="number" [(ngModel)]="q.note" placeholder="Points" />
+      </div>
     </div>
 
-    <div class="reponses-block">
-  <label>Réponses correctes :</label>
-  <ul>
-    <li *ngFor="let rep of q.reponsesCorrectes ?? []; let j = index; trackBy: trackByIndex" class="correct-item">
-      <input type="text" [(ngModel)]="q.reponsesCorrectes![j]" placeholder="Réponse correcte" />
-      <button type="button" class="delete-btn" (click)="q.reponsesCorrectes!.splice(j, 1)">Supprimer</button>
-    </li>
-  </ul>
-  <button type="button" class="add-btn" (click)="q.reponsesCorrectes = q.reponsesCorrectes ?? []; q.reponsesCorrectes.push('')">Ajouter une bonne réponse</button>
-</div>
-
-
-    <div class="points-group">
-      <label>Points :</label>
-      <input type="number" [(ngModel)]="q.note" placeholder="Points" />
-    </div>
-
+    <button type="button" class="add-btn" (click)="addQuestionToSection(section)">Ajouter question à cette section</button>
   </div>
 
   <div class="buttons">
-    <button type="button" class="add-btn" (click)="addQuestion()">Ajouter question</button>
+    <button type="button" class="add-btn" (click)="addSection()">Ajouter section</button>
     <button type="button" class="add-btn" (click)="fileInput.click()">Importer CSV</button>
     <button type="button" class="create-form" (click)="submit()">Créer formulaire</button>
   </div>
